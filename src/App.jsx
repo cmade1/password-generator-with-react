@@ -10,9 +10,9 @@ function App() {
   function generatePassword() {
     let password = "";
 
-    for (let i = 0; i <= passwordLength; i++) {
+    for (let i = 0; i < passwordLength; i++) {
       const randomIndex = Math.floor(Math.random() * Charset.length);
-      password += Charset[randomIndex];
+      password = password + Charset[randomIndex];
     }
 
     setValue(password);
@@ -46,7 +46,6 @@ function App() {
             type="range"
             min="6"
             max="32"
-            step="1"
             value={passwordLength}
             onChange={(e) => setPasswordLength(e.target.value)}
             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-white"
