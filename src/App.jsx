@@ -19,17 +19,12 @@ function App() {
   }
 
   function copyText() {
-    var copyText = document.getElementById("myInput");
-
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
-
-    navigator.clipboard.writeText(copyText.value);
-    alert("Copied the text: " + copyText.value);
+    navigator.clipboard.writeText(value);
+    alert("Copied the text: " + value);
   }
 
   return (
-    <div className="flex flex-col gap-4  justify-center items-center mt-12 max-w-2xl mx-auto bg-blue-500 min-h-[350px] min-w-[550px] rounded-3xl">
+    <div className="flex flex-col gap-4  justify-center items-center mt-12 max-w-2xl mx-auto bg-red-900 min-h-[350px] min-w-[550px] rounded-3xl">
       <h1 className="text-4xl font-bold text-white">Password Generator</h1>
       <div className="flex w-full px-2">
         <input
@@ -45,20 +40,24 @@ function App() {
         </button>
       </div>
       <div className="flex justify-end w-full px-2 gap-2">
-        <label className="text-lg max-w-20 text-white">Password Length:</label>
-        <input
-          type="number"
-          min="8"
-          max="32"
-          value={passwordLength}
-          onChange={(e) => setPasswordLength(e.target.value)}
-          className="border-2 border-black rounded-xl py-4 text-center text-xl"
-        />
+        <div className="">
+          <p className="text-white">Password Length:</p>
+          <input
+            type="range"
+            min="6"
+            max="32"
+            step="1"
+            value={passwordLength}
+            onChange={(e) => setPasswordLength(e.target.value)}
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-white"
+          />
+          <p className="text-center text-white">{passwordLength}</p>
+        </div>
         <button
           onClick={generatePassword}
-          className="bg-gray-800 text-white text-2xl rounded-full py-2 px-4"
+          className="bg-black text-white text-2xl rounded-full py-2 px-4"
         >
-          +Olustur
+          Create
         </button>
       </div>
     </div>
